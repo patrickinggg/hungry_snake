@@ -281,7 +281,7 @@ class SnakeGame:
                 COLORS["text"],
             )
             self.draw_text(
-                "PRESS ESC TO QUIT",
+                "PRESS ESC TO MENU",
                 WINDOW_WIDTH // 2,
                 WINDOW_HEIGHT // 2 + 60,
                 6,
@@ -402,20 +402,20 @@ class SnakeGame:
         overlay.fill((0, 0, 0))
         self.screen.blit(overlay, (0, 0))
 
-        self.draw_text("GAME OVER", WINDOW_WIDTH // 2, 140, 20, COLORS["red"])
+        self.draw_text("GAME OVER", WINDOW_WIDTH // 2, 100, 20, COLORS["red"])
 
-        self.draw_text("FINAL SCORE", WINDOW_WIDTH // 2, 210, 6, (150, 150, 150))
-        self.draw_text(str(self.score), WINDOW_WIDTH // 2, 250, 14, COLORS["text"])
+        self.draw_text("FINAL SCORE", WINDOW_WIDTH // 2, 170, 6, (150, 150, 150))
+        self.draw_text(str(self.score), WINDOW_WIDTH // 2, 220, 14, COLORS["text"])
 
         if self.new_highscore:
-            self.draw_text("NEW RECORD", WINDOW_WIDTH // 2, 310, 8, COLORS["highlight"])
+            self.draw_text("NEW RECORD", WINDOW_WIDTH // 2, 280, 8, COLORS["highlight"])
 
         options = ["RESTART", "MENU", "QUIT"]
         for i, option in enumerate(options):
             button_width = 180
-            button_height = 45
-            spacing = 60
-            start_y = 360
+            button_height = 50
+            spacing = 70
+            start_y = 340
 
             x = WINDOW_WIDTH // 2 - button_width // 2
             y = start_y + i * spacing
@@ -424,9 +424,9 @@ class SnakeGame:
             self.draw_button(option, x, y, button_width, button_height, is_selected)
 
         self.draw_text(
-            "ARROWS OR W/S TO SELECT", WINDOW_WIDTH // 2, 555, 4, (100, 100, 100)
+            "ARROWS OR W/S TO SELECT", WINDOW_WIDTH // 2, 560, 4, (100, 100, 100)
         )
-        self.draw_text("ENTER TO CONFIRM", WINDOW_WIDTH // 2, 580, 4, (100, 100, 100))
+        self.draw_text("ENTER TO CONFIRM", WINDOW_WIDTH // 2, 590, 4, (100, 100, 100))
 
     def move_snake(self):
         head_x, head_y = self.snake[0]
@@ -484,7 +484,8 @@ class SnakeGame:
                 if event.key == pygame.K_SPACE:
                     self.paused = False
                 elif event.key == pygame.K_ESCAPE:
-                    return False
+                    self.state = "START"
+                    self.paused = False
             else:
                 if event.key == pygame.K_SPACE:
                     self.paused = True
