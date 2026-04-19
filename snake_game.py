@@ -142,7 +142,7 @@ class SnakeGame:
             self.screen, COLORS["text"], (x, y, width, height), 2, border_radius=10
         )
         self.draw_text(
-            text, x + width // 2, y + height // 2 - 15, 8, COLORS["text"], center=True
+            text, x + width // 2, y + height // 2 - 12, 7, COLORS["text"], center=True
         )
 
     def load_highscore(self):
@@ -197,7 +197,7 @@ class SnakeGame:
         self.screen.fill(COLORS["background"])
 
         snake_x = WINDOW_WIDTH // 2 - 100
-        snake_y = 80
+        snake_y = 70
         for i in range(5):
             color = COLORS["snake_head"] if i == 0 else COLORS["snake_body"]
             pygame.draw.rect(
@@ -207,9 +207,9 @@ class SnakeGame:
                 border_radius=4,
             )
 
-        self.draw_text("SNAKE", WINDOW_WIDTH // 2, 180, 18, COLORS["highlight"])
+        self.draw_text("HUNGRY SNAKE", WINDOW_WIDTH // 2, 160, 16, COLORS["highlight"])
 
-        self.draw_text("HIGHSCORE", WINDOW_WIDTH // 2, 260, 6, (150, 150, 150))
+        self.draw_text("HIGHEST SCORE", WINDOW_WIDTH // 2, 250, 5, (150, 150, 150))
         self.draw_text(
             str(self.highscore), WINDOW_WIDTH // 2, 290, 10, COLORS["highlight"]
         )
@@ -217,17 +217,13 @@ class SnakeGame:
         self.draw_text("DIFFICULTY", WINDOW_WIDTH // 2, 350, 6, (150, 150, 150))
 
         for i, (diff_id, config) in enumerate(DIFFICULTIES.items()):
-            button_width = 120
-            button_height = 40
-            spacing = 140
-            start_x = (
-                WINDOW_WIDTH // 2
-                - (3 * spacing) // 2
-                + spacing // 2
-                - button_width // 2
-            )
-            x = start_x + i * spacing
-            y = 380
+            button_width = 180
+            button_height = 50
+            button_spacing = 30
+            total_width = 3 * button_width + 2 * button_spacing
+            start_x = (WINDOW_WIDTH - total_width) // 2
+            x = start_x + i * (button_width + button_spacing)
+            y = 390
 
             is_selected = i == self.difficulty
             self.draw_button(
@@ -235,13 +231,13 @@ class SnakeGame:
             )
 
         self.draw_text(
-            "PRESS SPACE OR ENTER TO START", WINDOW_WIDTH // 2, 470, 5, COLORS["text"]
+            "PRESS SPACE OR ENTER TO START", WINDOW_WIDTH // 2, 480, 5, COLORS["text"]
         )
         self.draw_text(
-            "USE ARROW KEYS TO MOVE", WINDOW_WIDTH // 2, 510, 5, (150, 150, 150)
+            "USE ARROW KEYS TO MOVE", WINDOW_WIDTH // 2, 520, 5, (150, 150, 150)
         )
         self.draw_text(
-            "PRESS ESC OR Q TO QUIT", WINDOW_WIDTH // 2, 545, 4, (100, 100, 100)
+            "PRESS ESC OR Q TO QUIT", WINDOW_WIDTH // 2, 555, 4, (100, 100, 100)
         )
 
     def draw_game(self):
