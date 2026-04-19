@@ -402,7 +402,7 @@ class SnakeGame:
         overlay.fill((0, 0, 0))
         self.screen.blit(overlay, (0, 0))
 
-        self.draw_text("GAME OVER", WINDOW_WIDTH // 2, 100, 20, COLORS["red"])
+        self.draw_text("GAME OVER", WINDOW_WIDTH // 2, 99, 20, COLORS["red"])
 
         self.draw_text("FINAL SCORE", WINDOW_WIDTH // 2, 200, 6, (150, 150, 150))
         self.draw_text(str(self.score), WINDOW_WIDTH // 2, 250, 14, COLORS["text"])
