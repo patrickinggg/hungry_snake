@@ -404,18 +404,18 @@ class SnakeGame:
 
         self.draw_text("GAME OVER", WINDOW_WIDTH // 2, 100, 20, COLORS["red"])
 
-        self.draw_text("FINAL SCORE", WINDOW_WIDTH // 2, 170, 6, (150, 150, 150))
-        self.draw_text(str(self.score), WINDOW_WIDTH // 2, 220, 14, COLORS["text"])
+        self.draw_text("FINAL SCORE", WINDOW_WIDTH // 2, 180, 6, (150, 150, 150))
+        self.draw_text(str(self.score), WINDOW_WIDTH // 2, 230, 14, COLORS["text"])
 
         if self.new_highscore:
-            self.draw_text("NEW RECORD", WINDOW_WIDTH // 2, 280, 8, COLORS["highlight"])
+            self.draw_text("NEW RECORD", WINDOW_WIDTH // 2, 290, 8, COLORS["highlight"])
 
         options = ["RESTART", "MENU", "QUIT"]
         for i, option in enumerate(options):
-            button_width = 180
+            button_width = 200
             button_height = 50
-            spacing = 70
-            start_y = 340
+            spacing = 65
+            start_y = 350
 
             x = WINDOW_WIDTH // 2 - button_width // 2
             y = start_y + i * spacing
@@ -424,9 +424,9 @@ class SnakeGame:
             self.draw_button(option, x, y, button_width, button_height, is_selected)
 
         self.draw_text(
-            "ARROWS OR W/S TO SELECT", WINDOW_WIDTH // 2, 560, 4, (100, 100, 100)
+            "ARROWS OR W/S TO SELECT", WINDOW_WIDTH // 2, 540, 4, (100, 100, 100)
         )
-        self.draw_text("ENTER TO CONFIRM", WINDOW_WIDTH // 2, 590, 4, (100, 100, 100))
+        self.draw_text("ENTER TO CONFIRM", WINDOW_WIDTH // 2, 565, 4, (100, 100, 100))
 
     def move_snake(self):
         head_x, head_y = self.snake[0]
