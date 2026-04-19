@@ -269,16 +269,23 @@ class SnakeGame:
             self.draw_text(
                 "PAUSED",
                 WINDOW_WIDTH // 2,
-                WINDOW_HEIGHT // 2 - 40,
+                WINDOW_HEIGHT // 2 - 80,
                 18,
                 COLORS["highlight"],
             )
             self.draw_text(
-                "PRESS SPACE OR ESC TO CONTINUE",
+                "PRESS SPACE TO CONTINUE",
                 WINDOW_WIDTH // 2,
-                WINDOW_HEIGHT // 2 + 40,
-                5,
+                WINDOW_HEIGHT // 2 + 20,
+                6,
                 COLORS["text"],
+            )
+            self.draw_text(
+                "PRESS ESC TO QUIT",
+                WINDOW_WIDTH // 2,
+                WINDOW_HEIGHT // 2 + 60,
+                6,
+                (150, 150, 150),
             )
 
     def draw_snake(self):
@@ -473,10 +480,17 @@ class SnakeGame:
 
     def handle_game_events(self, event):
         if event.type == pygame.KEYDOWN:
-            if event.key in (pygame.K_SPACE, pygame.K_ESCAPE):
-                self.paused = not self.paused
-            elif not self.paused:
-                if event.key == pygame.K_UP and self.direction != "DOWN":
+            if self.paused:
+                if event.key == pygame.K_SPACE:
+                    self.paused = False
+                elif event.key == pygame.K_ESCAPE:
+                    return False
+            else:
+                if event.key == pygame.K_SPACE:
+                    self.paused = True
+                elif event.key == pygame.K_ESCAPE:
+                    self.paused = True
+                elif event.key == pygame.K_UP and self.direction != "DOWN":
                     self.next_direction = "UP"
                 elif event.key == pygame.K_DOWN and self.direction != "UP":
                     self.next_direction = "DOWN"
