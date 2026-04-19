@@ -404,8 +404,8 @@ class SnakeGame:
 
         self.draw_text("GAME OVER", WINDOW_WIDTH // 2, 100, 20, COLORS["red"])
 
-        self.draw_text("FINAL SCORE", WINDOW_WIDTH // 2, 180, 6, (150, 150, 150))
-        self.draw_text(str(self.score), WINDOW_WIDTH // 2, 230, 14, COLORS["text"])
+        self.draw_text("FINAL SCORE", WINDOW_WIDTH // 2, 200, 6, (150, 150, 150))
+        self.draw_text(str(self.score), WINDOW_WIDTH // 2, 250, 14, COLORS["text"])
 
         if self.new_highscore:
             self.draw_text("NEW RECORD", WINDOW_WIDTH // 2, 290, 8, COLORS["highlight"])
