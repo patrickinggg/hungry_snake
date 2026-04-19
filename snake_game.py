@@ -261,7 +261,7 @@ class SnakeGame:
 
         speed_text = "SPEED:" + str(int(self.speed))
         self.draw_text(
-            speed_text, WINDOW_WIDTH - 120, 15, 6, COLORS["text"], center=False
+            speed_text, WINDOW_WIDTH - 190, 15, 6, COLORS["text"], center=False
         )
 
         if self.paused:
